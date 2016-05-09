@@ -1,0 +1,3 @@
+true: package(ctypes)
+<*.{cma,cmxa}>: use_posix_types_stubs
+<*.c>: use_ctypes

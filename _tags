@@ -1,0 +1,2 @@
+true: warn(A-37-4), principal, safe_string, debug, bin_annot
+"lib": include

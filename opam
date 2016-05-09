@@ -1,0 +1,16 @@
+opam-version: "1.2"
+version: "dev"
+maintainer: "yallop@gmail.com"
+author: "yallop@gmail.com"
+homepage: "https://github.com/yallop/ocaml-posix-types"
+dev-repo: "http://github.com/yallop/ocaml-posix-types.git"
+bug-reports: "http://github.com/yallop/ocaml-posix-types/issues"
+license: "MIT"
+build: [[make]]
+install: [[make "install"]]
+remove: [["ocamlfind" "remove" "posix-types"]]
+depends: [
+   "ctypes" {>= "0.5.0"}
+   "ocamlfind" {build}
+]
+available: [ ocaml-version >= "4.01.0" ]

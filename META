@@ -1,0 +1,8 @@
+version = "0.1.0"
+description = "Unix sys/types.h types"
+requires = "ctypes"
+archive(byte) = "posix_types.cma"
+archive(bytes, plugin) = "posix_types.cma"
+archive(native) = "posix_types.cmxa"
+archive(native, plugin) = "posix_types.cmxs"
+exists_if = "posix_types.cma"
