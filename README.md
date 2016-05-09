@@ -9,3 +9,5 @@ representations for the
 The implementation details, such as sizes and alignments, of the types
 varies from platform to platform, but the interface of each type
 is consistent across platforms.
+
+[![Build Status](https://travis-ci.org/yallop/ocaml-posix-types.svg?branch=master)](https://travis-ci.org/yallop/ocaml-posix-types)
