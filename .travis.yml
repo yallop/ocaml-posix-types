@@ -1,0 +1,17 @@
+language: c
+sudo: required
+install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
+script: bash -ex .travis-opam.sh
+env:
+  - OCAML_VERSION=4.01 PACKAGE=posix-types
+  - OCAML_VERSION=4.02 PACKAGE=posix-types
+  - OCAML_VERSION=4.03 PACKAGE=posix-types
+os:
+  - linux
+  - osx
+matrix:
+  exclude:
+    - os: osx
+      env: OCAML_VERSION=4.01 PACKAGE=posix-types
+    - os: osx
+      env: OCAML_VERSION=4.03 PACKAGE=posix-types
