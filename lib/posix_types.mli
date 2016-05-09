@@ -133,6 +133,7 @@ type blkcnt_t = Blkcnt.t
 type blksize_t = Blksize.t
 type clock_t = Clock.t
 type clockid_t = Clockid.t
+type dev_t = Dev.t
 type fsblkcnt_t = Fsblkcnt.t
 type fsfilcnt_t = Fsfilcnt.t
 type gid_t = Gid.t
@@ -164,6 +165,7 @@ val blkcnt_t : blkcnt_t Ctypes.typ
 val blksize_t : blksize_t Ctypes.typ
 val clock_t : clock_t Ctypes.typ
 val clockid_t : clockid_t Ctypes.typ
+val dev_t : dev_t Ctypes.typ
 val fsblkcnt_t : fsblkcnt_t Ctypes.typ
 val fsfilcnt_t : fsfilcnt_t Ctypes.typ
 val gid_t : gid_t Ctypes.typ
