@@ -18,9 +18,6 @@ module Blksize : Signed.S
 module Clock : Unsigned.S
 (** Used for system times in clock ticks or CLOCKS_PER_SEC; see <time.h>. *)
 
-module Clockid : Unsigned.S
-(** Used for clock ID type in the clock and timer functions. *)
-
 module Dev : Unsigned.S
   with type t = PosixTypes.Dev.t
 (** Used for device IDs. *)
@@ -63,12 +60,6 @@ sig
   module Attr: sig type t val t : t Ctypes.typ end
   (** Used to identify a thread attribute object. *)
 
-  module Barrier: sig type t val t : t Ctypes.typ end
-  (** Used to identify a barrier. *)
-
-  module Barrierattr: sig type t val t : t Ctypes.typ end
-  (** Used to define a barrier attributes object. *)
-
   module Cond: sig type t val t : t Ctypes.typ end
   (** Used for condition variables. *)
 
@@ -93,15 +84,10 @@ sig
   module Rwlockattr: sig type t val t : t Ctypes.typ end
   (** Used for read-write lock attributes. *)
 
-  module Spinlock: sig type t val t : t Ctypes.typ end
-  (** Used to identify a spin lock. *)
-
   module T: sig type t val t : t Ctypes.typ end
   (** Used to identify a thread. *)
 
   type attr_t = Attr.t
-  type barrier_t = Barrier.t
-  type barrierattr_t = Barrierattr.t
   type cond_t = Cond.t
   type condattr_t = Condattr.t
   type key_t = Key.t
@@ -110,7 +96,6 @@ sig
   type once_t = Once.t
   type rwlock_t = Rwlock.t
   type rwlockattr_t = Rwlockattr.t
-  type spinlock_t = Spinlock.t
   type t = T.t
 end
 
@@ -132,7 +117,6 @@ module Uid : Unsigned.S
 type blkcnt_t = Blkcnt.t
 type blksize_t = Blksize.t
 type clock_t = Clock.t
-type clockid_t = Clockid.t
 type dev_t = Dev.t
 type fsblkcnt_t = Fsblkcnt.t
 type fsfilcnt_t = Fsfilcnt.t
@@ -144,8 +128,6 @@ type nlink_t = Nlink.t
 type off_t = Off.t
 type pid_t = Pid.t
 type pthread_attr_t = Pthread.Attr.t
-type pthread_barrier_t = Pthread.Barrier.t
-type pthread_barrierattr_t = Pthread.Barrierattr.t
 type pthread_cond_t = Pthread.Cond.t
 type pthread_condattr_t = Pthread.Condattr.t
 type pthread_key_t = Pthread.Key.t
@@ -154,7 +136,6 @@ type pthread_mutexattr_t = Pthread.Mutexattr.t
 type pthread_once_t = Pthread.Once.t
 type pthread_rwlock_t = Pthread.Rwlock.t
 type pthread_rwlockattr_t = Pthread.Rwlockattr.t
-type pthread_spinlock_t = Pthread.Spinlock.t
 type pthread_t = Pthread.T.t
 type size_t = Size.t
 type ssize_t = Ssize.t
@@ -164,7 +145,6 @@ type uid_t = Uid.t
 val blkcnt_t : blkcnt_t Ctypes.typ
 val blksize_t : blksize_t Ctypes.typ
 val clock_t : clock_t Ctypes.typ
-val clockid_t : clockid_t Ctypes.typ
 val dev_t : dev_t Ctypes.typ
 val fsblkcnt_t : fsblkcnt_t Ctypes.typ
 val fsfilcnt_t : fsfilcnt_t Ctypes.typ
@@ -176,8 +156,6 @@ val nlink_t : nlink_t Ctypes.typ
 val off_t : off_t Ctypes.typ
 val pid_t : pid_t Ctypes.typ
 val pthread_attr_t : pthread_attr_t Ctypes.typ
-val pthread_barrier_t : pthread_barrier_t Ctypes.typ
-val pthread_barrierattr_t : pthread_barrierattr_t Ctypes.typ
 val pthread_cond_t : pthread_cond_t Ctypes.typ
 val pthread_condattr_t : pthread_condattr_t Ctypes.typ
 val pthread_key_t : pthread_key_t Ctypes.typ
@@ -186,7 +164,6 @@ val pthread_mutexattr_t : pthread_mutexattr_t Ctypes.typ
 val pthread_once_t : pthread_once_t Ctypes.typ
 val pthread_rwlock_t : pthread_rwlock_t Ctypes.typ
 val pthread_rwlockattr_t : pthread_rwlockattr_t Ctypes.typ
-val pthread_spinlock_t : pthread_spinlock_t Ctypes.typ
 val pthread_t : pthread_t Ctypes.typ
 val size_t : size_t Ctypes.typ
 val ssize_t : ssize_t Ctypes.typ

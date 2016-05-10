@@ -107,8 +107,6 @@ external typeof_blksize_t : unit -> arithmetic =
   "posix_types_typeof_blksize_t"
 external typeof_clock_t : unit -> arithmetic =
   "posix_types_typeof_clock_t"
-external typeof_clockid_t : unit -> arithmetic =
-  "posix_types_typeof_clockid_t"
 external typeof_fsblkcnt_t : unit -> arithmetic =
   "posix_types_typeof_fsblkcnt_t"
 external typeof_fsfilcnt_t : unit -> arithmetic =
@@ -123,7 +121,6 @@ external typeof_uid_t : unit -> arithmetic =
 module Blkcnt = (val mkSigned "blkcnt_t" (typeof_blkcnt_t ()))
 module Blksize = (val mkSigned "blksize_t" (typeof_blksize_t ()))
 module Clock = (val mkArithmetic "clock_t" (typeof_clock_t ()))
-module Clockid = (val mkArithmetic "clockid_t" (typeof_clockid_t ()))
 module Fsblkcnt = (val mkArithmetic "fsblkcnt_t" (typeof_fsblkcnt_t ()))
 module Fsfilcnt = (val mkArithmetic "fsfilcnt_t" (typeof_fsfilcnt_t ()))
 module Gid = (val mkArithmetic "gid_t" (typeof_gid_t ()))
@@ -133,7 +130,6 @@ module Uid = (val mkArithmetic "uid_t" (typeof_uid_t ()))
 type blkcnt_t = Blkcnt.t
 type blksize_t = Blksize.t
 type clock_t = Clock.t
-type clockid_t = Clockid.t
 type dev_t = Dev.t
 type fsblkcnt_t = Fsblkcnt.t
 type fsfilcnt_t = Fsfilcnt.t
@@ -152,7 +148,6 @@ type uid_t = Uid.t
 let blkcnt_t = Blkcnt.t
 let blksize_t = Blksize.t
 let clock_t = Clock.t
-let clockid_t = Clockid.t
 let dev_t = PosixTypes.dev_t
 let fsblkcnt_t = Fsblkcnt.t
 let fsfilcnt_t = Fsfilcnt.t
@@ -170,10 +165,6 @@ let uid_t = Uid.t
 
 external sizeof_pthread_attr_t : unit -> int =
   "posix_types_sizeof_pthread_attr_t"
-external sizeof_pthread_barrier_t : unit -> int =
-  "posix_types_sizeof_pthread_barrier_t"
-external sizeof_pthread_barrierattr_t : unit -> int =
-  "posix_types_sizeof_pthread_barrierattr_t"
 external sizeof_pthread_cond_t : unit -> int =
   "posix_types_sizeof_pthread_cond_t"
 external sizeof_pthread_condattr_t : unit -> int =
@@ -190,17 +181,11 @@ external sizeof_pthread_rwlock_t : unit -> int =
   "posix_types_sizeof_pthread_rwlock_t"
 external sizeof_pthread_rwlockattr_t : unit -> int =
   "posix_types_sizeof_pthread_rwlockattr_t"
-external sizeof_pthread_spinlock_t : unit -> int =
-  "posix_types_sizeof_pthread_spinlock_t"
 external sizeof_pthread_t : unit -> int =
   "posix_types_sizeof_pthread_t"
 
 external alignmentof_pthread_attr_t : unit -> int =
   "posix_types_alignmentof_pthread_attr_t"
-external alignmentof_pthread_barrier_t : unit -> int =
-  "posix_types_alignmentof_pthread_barrier_t"
-external alignmentof_pthread_barrierattr_t : unit -> int =
-  "posix_types_alignmentof_pthread_barrierattr_t"
 external alignmentof_pthread_cond_t : unit -> int =
   "posix_types_alignmentof_pthread_cond_t"
 external alignmentof_pthread_condattr_t : unit -> int =
@@ -217,8 +202,6 @@ external alignmentof_pthread_rwlock_t : unit -> int =
   "posix_types_alignmentof_pthread_rwlock_t"
 external alignmentof_pthread_rwlockattr_t : unit -> int =
   "posix_types_alignmentof_pthread_rwlockattr_t"
-external alignmentof_pthread_spinlock_t : unit -> int =
-  "posix_types_alignmentof_pthread_spinlock_t"
 external alignmentof_pthread_t : unit -> int =
   "posix_types_alignmentof_pthread_t"
 
@@ -228,14 +211,6 @@ struct
                    ~name:"pthread_attr_t"
                    ~size:(sizeof_pthread_attr_t ())
                    ~alignment:(alignmentof_pthread_attr_t ()))
-  module Barrier = (val mkAbstractSized
-                   ~name:"pthread_barrier_t"
-                   ~size:(sizeof_pthread_barrier_t ())
-                   ~alignment:(alignmentof_pthread_barrier_t ()))
-  module Barrierattr = (val mkAbstractSized
-                   ~name:"pthread_barrierattr_t"
-                   ~size:(alignmentof_pthread_barrierattr_t ())
-                   ~alignment:(sizeof_pthread_barrierattr_t ()))
   module Cond = (val mkAbstractSized
                    ~name:"pthread_cond_t"
                    ~size:(alignmentof_pthread_cond_t ())
@@ -268,18 +243,12 @@ struct
                    ~name:"pthread_rwlockattr_t"
                    ~size:(alignmentof_pthread_rwlockattr_t ())
                    ~alignment:(sizeof_pthread_rwlockattr_t ()))
-  module Spinlock = (val mkAbstractSized
-                   ~name:"pthread_spinlock_t"
-                   ~size:(alignmentof_pthread_spinlock_t ())
-                   ~alignment:(sizeof_pthread_spinlock_t ()))
   module T = (val mkAbstractSized
                    ~name:"pthread_t"
                    ~size:(alignmentof_pthread_t ())
                    ~alignment:(sizeof_pthread_t ()))
              
   type attr_t = Attr.t
-  type barrier_t = Barrier.t
-  type barrierattr_t = Barrierattr.t
   type cond_t = Cond.t
   type condattr_t = Condattr.t
   type key_t = Key.t
@@ -288,13 +257,10 @@ struct
   type once_t = Once.t
   type rwlock_t = Rwlock.t
   type rwlockattr_t = Rwlockattr.t
-  type spinlock_t = Spinlock.t
   type t = T.t
 end
 
 type pthread_attr_t = Pthread.Attr.t
-type pthread_barrier_t = Pthread.Barrier.t
-type pthread_barrierattr_t = Pthread.Barrierattr.t
 type pthread_cond_t = Pthread.Cond.t
 type pthread_condattr_t = Pthread.Condattr.t
 type pthread_key_t = Pthread.Key.t
@@ -303,12 +269,9 @@ type pthread_mutexattr_t = Pthread.Mutexattr.t
 type pthread_once_t = Pthread.Once.t
 type pthread_rwlock_t = Pthread.Rwlock.t
 type pthread_rwlockattr_t = Pthread.Rwlockattr.t
-type pthread_spinlock_t = Pthread.Spinlock.t
 type pthread_t = Pthread.T.t
 
 let pthread_attr_t = Pthread.Attr.t
-let pthread_barrier_t = Pthread.Barrier.t
-let pthread_barrierattr_t = Pthread.Barrierattr.t
 let pthread_cond_t = Pthread.Cond.t
 let pthread_condattr_t = Pthread.Condattr.t
 let pthread_key_t = Pthread.Key.t
@@ -317,5 +280,4 @@ let pthread_mutexattr_t = Pthread.Mutexattr.t
 let pthread_once_t = Pthread.Once.t
 let pthread_rwlock_t = Pthread.Rwlock.t
 let pthread_rwlockattr_t = Pthread.Rwlockattr.t
-let pthread_spinlock_t = Pthread.Spinlock.t
 let pthread_t = Pthread.T.t
