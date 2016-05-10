@@ -7,7 +7,7 @@ provides
 representations for the
 [types exposed in `<sys/types.h>`](http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_types.h.html).
 The implementation details, such as sizes and alignments, of the types
-varies from platform to platform, but the interface of each type
+vary from platform to platform, but the interface of each type
 is consistent across platforms.
 
 [![Build Status](https://travis-ci.org/yallop/ocaml-posix-types.svg?branch=master)](https://travis-ci.org/yallop/ocaml-posix-types)
