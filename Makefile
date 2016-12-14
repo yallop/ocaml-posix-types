@@ -13,7 +13,7 @@ TARGETS=.cma .cmxa
 PRODUCTS=$(addprefix $(MOD_NAME),$(TARGETS))
 PRODUCTS += lib$(MOD_NAME)_stubs.a dll$(MOD_NAME)_stubs.so
 
-TYPES=.mli .cmi .cmti
+TYPES=.mli .cmi .cmti .cmx
 
 INSTALL:=$(addprefix $(MOD_NAME),$(TYPES)) \
          $(addprefix $(MOD_NAME),$(TARGETS))
