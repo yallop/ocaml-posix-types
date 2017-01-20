@@ -1,4 +1,4 @@
-version = "0.1.0"
+version = "0.1.1"
 description = "Unix sys/types.h types"
 requires = "ctypes"
 archive(byte) = "posix_types.cma"
